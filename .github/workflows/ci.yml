@@ -35,4 +35,4 @@ jobs:
           file: "images/Dockerfile"
           push: ${{ (github.ref == 'refs/heads/main' && github.event_name == 'push') }}
           tags: |
-            ghcr.io/cvanlaw/tesla-data-exporter:latest
+            ghcr.io/cvanlaw/dotnet-hello-world-lambda:latest
