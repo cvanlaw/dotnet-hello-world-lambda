@@ -36,3 +36,4 @@ jobs:
           push: ${{ (github.ref == 'refs/heads/main' && github.event_name == 'push') }}
           tags: |
             ghcr.io/cvanlaw/dotnet-hello-world-lambda:latest
+            ghcr.io/cvanlaw/dotnet-hello-world-lambda:${{steps.semver.outputs.new_tag}}
