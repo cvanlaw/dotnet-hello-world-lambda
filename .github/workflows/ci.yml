@@ -27,7 +27,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: "{{defaultContext}}:lambda/src/VanLaw.Dev.TeslaLambda.Function"
+          context: "{{defaultContext}}:src"
           push: ${{ (github.ref == 'refs/heads/main' && github.event_name == 'push') }}
           tags: |
             ghcr.io/cvanlaw/tesla-data-exporter:latest
