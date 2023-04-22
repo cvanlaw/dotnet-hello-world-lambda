@@ -37,3 +37,17 @@ jobs:
           tags: |
             ghcr.io/cvanlaw/dotnet-hello-world-lambda:latest
             ghcr.io/cvanlaw/dotnet-hello-world-lambda:${{steps.semver.outputs.new_tag}}
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: "src"
+          file: "images/Dockerfile"
+          push: ${{ (github.ref == 'refs/heads/main' && github.event_name == 'push') }}
+          tags: |
+            cvanlaw/dotnet-hello-world-lambda:latest
+            cvanlaw/dotnet-hello-world-lambda:${{steps.semver.outputs.new_tag}}
