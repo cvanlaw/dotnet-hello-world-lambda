@@ -76,7 +76,8 @@ jobs:
           cd infra
           terraform init -backend=true
           terraform apply -auto-approve
-          echo "repository_url=$(terraform output -raw repository_url)" >> "$GITHUB_OUTPUT"
+          ECR_REPO_URL=$(terraform output -raw repository_url)
+          echo "repository_url=$ECR_REPO_URL" >> "$GITHUB_OUTPUT"
   build_container_image:
     name: 'Build Container Image'
     needs: terraform
