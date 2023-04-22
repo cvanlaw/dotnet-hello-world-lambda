@@ -110,6 +110,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: "src"
+          provenance: false
           file: "images/Dockerfile"
           push: ${{ (github.ref == 'refs/heads/main' && github.event_name == 'push') }}
           tags: |
