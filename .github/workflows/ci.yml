@@ -74,6 +74,7 @@ jobs:
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: |
           cd infra
+          terraform init -backend=true
           terraform apply -auto-approve
           echo "repository_url=$(terraform output repository_url)" >> "$GITHUB_OUTPUT"
   build_container_image:
